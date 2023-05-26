@@ -1,0 +1,166 @@
+{% load static %}
+
+<!doctype html>
+<html class="h-100" lang="en">
+    <head>
+    <!-- Required meta tags -->
+        {% block meta %}
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% endblock %}
+
+        {% block extra_meta %}
+        {% endblock %}
+
+        {% block corecss %}
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+                integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" 
+                crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% endblock %}
+
+        {% block extra_css %}
+        {% endblock %}
+
+        {% block corejs %}
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js" 
+                    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" 
+                    crossorigin="anonymous">
+            </script>
+
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+                    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" 
+                    crossorigin="anonymous">
+            </script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" 
+                    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" 
+                    crossorigin="anonymous">
+            </script>
+
+            <script src="https://kit.fontawesome.com/155195b896.js" crossorigin="anonymous"></script>
+
+            <!-- STRIPE -->
+            {% comment %} <script src="https://js.stripe.com/v3/"></script> {% endcomment %}
+        {% endblock %}
+
+        {% block extra_js %}
+        {% endblock %}
+
+        <title>Rats Nest{% block extra_title %}{% endblock %} </title>
+
+    </head>
+
+    <body class="h-100">
+        <header id="topnav" class="container-fluid fixed-top p-0">
+            <nav class="navbar navbar-light w-100 d-block">
+                <div id="nav-top-section" class="row">
+                    <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" 
+                            data-target="#navbarcollapse" aria-controls="navbarToggleExternalContent" 
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="col-6 col-xs-7 col-md-2">
+                        <h2 class="m-0" style="margin-top: 16px;">Rats Nest</h2>
+                    </div>
+                    <!-- SearchBar -->
+                    <div class="col-12 col-sm-8 col-md-8 d-none d-md-inline-block">
+                        <form method="GET" action="">
+                            <div class="input-group w-100">
+                                <input id="search-bar"  class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site">
+                                <div class="input-group-append">
+                                    <button id="search-btn" class="form-control btn btn-black border border-black rounded-0" type="submit">
+                                        <span class="icon">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2 text-right">
+                        <!-- User Menu button -->
+                        <a class="btn btn-secondary" href="#" role="button" id="account-dropdown" 
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-circle-user fa-2xl mx-2"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="account-dropdown">
+                            <a class="dropdown-item my-2" href="#">Log In</a>
+                            <a class="dropdown-item my-2" href="#">Register</a>
+                            <a class="dropdown-item my-2" href="#"></a>
+                        </div>
+                        <!-- Shopping Bag Button -->
+                        <a class="btn btn-secondary" href="#" role="button" id="shopping-btn" 
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-basket-shopping fa-2xl mx-2"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="shopping-btn">
+                            <a class="dropdown-item my-2" href="#">Log In</a>
+                            <a class="dropdown-item my-2" href="#">Register</a>
+                            <a class="dropdown-item my-2" href="#"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="navbarcollapse" class="row gx-0 collapse d-md-block">
+                    <div class="col-12 col-md-5 mt-2 d-inline-block p-0">
+                        <a class="mx-1 domain-link d-block d-md-inline-block" href="">Clothing</a>
+                        <a class="mx-1 domain-link d-block d-md-inline-block" href="">Gear and Equipment</a>
+                        <a class="mx-1 domain-link d-block d-md-inline-block" href="">Supplements</a>
+                    </div>
+                    <div class="col-12 col-md-5 col-lg-6 mt-2 text-right d-inline-block p-0" style="margin-left: 75px;">
+                            <a class="mx-1 service-link d-block d-md-inline-block" href="">Outlet</a>
+                            <a class="mx-1 service-link d-block d-md-inline-block" href="">Giftcards</a>
+                            <a class="mx-1 service-link d-block d-md-inline-block" href="">Newsletter</a>
+                            <a class="mx-1 service-link d-block d-md-inline-block" href="">Contact</a>
+                    </div>
+                </div>
+                <div id="nav-btm-section" class="row w-100 d-inline d-md-none">
+                    <div id="mobile-search-bar" class="col-12">
+                        <form method="GET" action="">
+                            <div class="input-group w-100">
+                                <input id="search-bar"
+                                    class="form-control border border-black rounded-0" 
+                                    type="text" name="q" placeholder="Search our site"> <!-- SearchBar -->
+                                <div class="input-group-append">
+                                    <button id="search-btn" class="form-control btn btn-black border border-black rounded-0" type="submit">
+                                        <span class="icon">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        {% comment %} {% if messages %}
+
+        <div class="message-container">
+            {% for message in messages %}
+            {% with message.level as level %}
+                {% if message.level == 40 %}
+                    {% include 'includes/toasts/toast_error.html' %}
+                {% elif message.level == 30 %}
+                {% include 'includes/toasts/toast_warning.html' %}
+                {% elif message.level == 25 %}
+                    {% include 'includes/toasts/toast_success.html' %}
+                {% else %}
+                    {% include 'includes/toasts/toast_info.html' %}
+                {% endif %}
+            {% endwith %}
+            {% endfor %}
+        </div>
+        
+        {% endif %} {% endcomment %}
+        
+        {% block page_header %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

@@ -67,7 +67,7 @@
                     </div>
                     <!-- SearchBar -->
                     <div class="col-12 col-sm-8 col-md-8 d-none d-md-inline-block">
-                        <form method="GET" action="">
+                        <form method="GET" action="{% url 'products' 'q' %}">
                             <div class="input-group w-100">
                                 <input id="search-bar"  class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site">
                                 <div class="input-group-append">
@@ -105,9 +105,9 @@
                 </div>
                 <div id="navbarcollapse" class="row gx-0 collapse d-md-block">
                     <div class="col-12 col-md-5 mt-2 d-inline-block p-0">
-                        <a class="mx-1 domain-link d-block d-md-inline-block" href="">Clothing</a>
-                        <a class="mx-1 domain-link d-block d-md-inline-block" href="">Gear and Equipment</a>
-                        <a class="mx-1 domain-link d-block d-md-inline-block" href="">Supplements</a>
+                        <a class="mx-1 domain-link d-block d-md-inline-block" href="{% url 'products' 'clothing' %}">Clothing</a>
+                        <a class="mx-1 domain-link d-block d-md-inline-block" href="{% url 'products' 'gear_and_equipment' %}">Gear and Equipment</a>
+                        <a class="mx-1 domain-link d-block d-md-inline-block" href="{% url 'products' 'supplements' %}">Supplements</a>
                     </div>
                     <div class="col-12 col-md-5 col-lg-6 mt-2 text-right d-inline-block p-0" style="margin-left: 75px;">
                             <a class="mx-1 service-link d-block d-md-inline-block" href="">Outlet</a>

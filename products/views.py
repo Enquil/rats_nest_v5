@@ -8,8 +8,11 @@ from django.views import View
 
 class ProductView(View):
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request, param, *args, **kwargs):
         template = 'products/products.html'
-        if 'q' in request.GET:
-            query = request.GET['q']
+        if 'q' in param:
+            query = request.GET[param]
+            print(query)
+        else:
+            print(param)
         return render(request, template)

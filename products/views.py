@@ -7,5 +7,5 @@ from django.contrib import messages
 class ProductView(View):
 
     def get(self, request, *args, **kwargs):
-        template = 'home/index.html'
+        template = 'products/products.html'
         return render(request, template)

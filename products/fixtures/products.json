@@ -1,0 +1,19 @@
+[{
+    "pk": 1,
+    "category": 4,
+    "brand": 3,
+    "sku": 1430001,
+    "name": "GW High Tops",
+    "description": "GW High Tops is the obvious choice for strength training. These shoes perfectly blends quality, function and design. Thanks to carefully selected materials, we offer you a light, yet highly stable shoe that fits strength training perfectly.",
+    "feature_list":"Light and Stable,Flat outsole for optimal ground contact.,Unique design",
+    "has_sizes": "True",
+    "default_price": 85.99,
+    "price": 85.99,
+    "rating": 4.0,
+    "image_url": "",
+    "image": "1430001.jpg",
+    "image_url2":"",
+    "image2":"14300012.jpg",
+    "image_url3":"",
+    "image3":"14300013.jpg"
+}]

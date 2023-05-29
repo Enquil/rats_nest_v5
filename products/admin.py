@@ -25,3 +25,14 @@ class Brand(admin.ModelAdmin):
     )
 
     ordering = ('friendly_name',)
+
+
+class ProductAdmin(admin.ModelAdmin):
+
+    list_display = (
+        'pk',
+        'name',
+        'sku',
+    )
+
+    ordering = ('name', 'pk')

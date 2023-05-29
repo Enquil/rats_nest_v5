@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Brand
+from .models import Category, Brand, Product
 
 
 @admin.register(Category)
@@ -27,6 +27,7 @@ class Brand(admin.ModelAdmin):
     ordering = ('friendly_name',)
 
 
+@admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
 
     list_display = (

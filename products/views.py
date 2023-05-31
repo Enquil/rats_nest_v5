@@ -10,7 +10,6 @@ class ProductView(View):
 
     def get(self, request, query, *args, **kwargs):
         products = Product.objects.all().order_by('-price')
-        print(products)
         if query == 'search-query':
             meow = request.GET['q']
             print(meow)

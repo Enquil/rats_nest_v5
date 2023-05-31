@@ -35,6 +35,21 @@ class Brand(models.Model):
         return self.friendly_name
 
 
+class Color(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Colors'
+
+    name = models.CharField(max_length=254)
+    friendly_name = models.CharField(max_length=254, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_friendly_name(self):
+        return self.friendly_name
+
+
 class Product(models.Model):
 
     category = models.ForeignKey('Category', null=True,
@@ -43,6 +58,8 @@ class Product(models.Model):
                               on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True,)
     name = models.CharField(max_length=254)
+    color = models.ForeignKey('Color', null=True, blank=True,
+                              on_delete=models.SET_NULL)
     description = models.TextField()
     feature_list = models.CharField(max_length=254)
     has_sizes = models.BooleanField(default=False, null=True, blank=True,)

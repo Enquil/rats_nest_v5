@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Category, Brand, Product, Color
+from django.shortcuts import get_object_or_404
 
 
 @admin.register(Category)
@@ -46,6 +47,26 @@ class ProductAdmin(admin.ModelAdmin):
         'pk',
         'name',
         'sku',
+        'category'
     )
 
     ordering = ('name', 'pk')
+
+    actions = ['update_sku']
+
+    def update_sku(self, request, queryset):
+
+        for query in queryset:
+
+            product = Product.objects.filter(pk=query.pk)
+
+            if query.color is None:
+                color = '000'
+            else:
+                a = '000'.replace('0', '', len(str(query.color.pk)))
+                color = a + str(query.color.pk)
+
+            pk_list = [query.category.parent.pk, query.category.pk,
+                       query.brand.pk, query.pk, color]
+            sku = ''.join(map(str, pk_list))
+            product.update(sku=sku)

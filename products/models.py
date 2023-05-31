@@ -50,13 +50,22 @@ class Color(models.Model):
         return self.friendly_name
 
 
+class ProductManager(models.Manager):
+
+    def create_product(self, price, default_price):
+
+        if not self.price:
+            self.price = self.default_price
+        return self
+
+
 class Product(models.Model):
 
     category = models.ForeignKey('Category', null=True,
                                  on_delete=models.SET_NULL)
     brand = models.ForeignKey('Brand', null=True,
                               on_delete=models.SET_NULL)
-    sku = models.CharField(max_length=254, null=True,)
+    sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
     color = models.ForeignKey('Color', null=True, blank=True,
                               on_delete=models.SET_NULL)
@@ -64,7 +73,8 @@ class Product(models.Model):
     feature_list = models.CharField(max_length=254)
     has_sizes = models.BooleanField(default=False, null=True, blank=True,)
     default_price = models.DecimalField(max_digits=6, decimal_places=2)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(max_digits=6, decimal_places=2,
+                                null=True, blank=True)
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True,
                                  blank=True)
     # Images
@@ -78,3 +88,10 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+
+        if not self.price:
+            self.price = self.default_price
+
+        return super().save(*args, **kwargs)

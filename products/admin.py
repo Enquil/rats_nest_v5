@@ -13,7 +13,7 @@ class CategoryAdmin(admin.ModelAdmin):
         'parent',
     )
 
-    ordering = ('name', 'friendly_name', 'parent')
+    ordering = ('pk',)
 
 
 @admin.register(Brand)
@@ -50,7 +50,7 @@ class ProductAdmin(admin.ModelAdmin):
         'category'
     )
 
-    ordering = ('name', 'pk')
+    ordering = ('pk', 'name')
 
     actions = ['update_sku']
 
@@ -66,7 +66,7 @@ class ProductAdmin(admin.ModelAdmin):
                 a = '000'.replace('0', '', len(str(query.color.pk)))
                 color = a + str(query.color.pk)
 
-            pk_list = [query.category.parent.pk, query.category.pk,
+            pk_list = [domain, query.category.pk,
                        query.brand.pk, query.pk, color]
             sku = ''.join(map(str, pk_list))
             product.update(sku=sku)

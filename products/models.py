@@ -91,7 +91,14 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
 
+        color = str(self.color)
+        name = self.name
+
         if not self.price:
             self.price = self.default_price
+
+        if color is not None and color not in self.name:
+            self.name = None
+            self.name = name + ', ' + color
 
         return super().save(*args, **kwargs)

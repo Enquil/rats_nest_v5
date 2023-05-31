@@ -70,3 +70,4 @@ class ProductAdmin(admin.ModelAdmin):
                        query.brand.pk, query.pk, color]
             sku = ''.join(map(str, pk_list))
             product.update(sku=sku)
+    

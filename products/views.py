@@ -8,23 +8,15 @@ from django.views import View
 
 class ProductView(View):
 
-    def get(self, request, query, *args, **kwargs):
-        products = Product.objects.all().order_by('-price')
-        if query == 'search-query':
-            meow = request.GET['q']
-            print(meow)
-        template = 'products/products.html'
-        return render(request, template,
-                      {"products": products})
-
-
-class ProductView(View):
-
-    def get(self, request, query, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
 
         products = Product.objects.all().order_by('-price')
 
-        if query == 'search-query':
+        if 'domain' in request.GET:
+            domain = request.GET['domain']
+            products = Product.objects.filter(domain=domain)
+
+        if 'q' in request.GET:
             q = request.GET['q']
 
         template = 'products/products.html'
@@ -32,10 +24,9 @@ class ProductView(View):
                       {"products": products})
 
 
-# class ProductDetail(View):
-#     """ Detailed view for chosen product """
+class ProductDetail(View):
+    """ Detailed view for chosen product """
 
-#     def get(self, request,  *args, *kwargs)
+    def get(self, request,  *args, **kwargs):
 
-
-#     return render(request, 'products/product_detail.html', context)
+        return render(request, 'products/product_detail.html')

@@ -14,8 +14,10 @@
         <div class="row h-100">
             <div class="col-12 col-md-4">
             {% for product in products %}
-                <p>{{ product.name }}{{ product.price }}</p>
-                <img class="list-img" src="media/{{ product.image }}" alt="">
+                <a href="">
+                    <p>{{ product.name }}{{ product.price }}</p>
+                    <img class="list-img" src="media/{{ product.image }}" alt="">
+                </a>
             {% endfor %}
             </div>
         </div>

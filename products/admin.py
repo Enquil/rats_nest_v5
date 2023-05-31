@@ -63,11 +63,10 @@ class ProductAdmin(admin.ModelAdmin):
             if query.color is None:
                 color = '000'
             else:
-                a = '000'.replace('0', '', len(str(query.color.pk)))
-                color = a + str(query.color.pk)
+                color_mix = '000'.replace('0', '', len(str(query.color.pk)))
+                color = color_mix + str(query.color.pk)
 
             pk_list = [domain, query.category.pk,
                        query.brand.pk, query.pk, color]
             sku = ''.join(map(str, pk_list))
             product.update(sku=sku)
-    

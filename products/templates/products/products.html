@@ -15,6 +15,7 @@
             <div class="col-12 col-md-4">
             {% for product in products %}
                 <p>{{ product.name }}{{ product.price }}</p>
+                <img class="list-img" src="media/{{ product.image }}" alt="">
             {% endfor %}
             </div>
         </div>

@@ -16,3 +16,26 @@ class ProductView(View):
         template = 'products/products.html'
         return render(request, template,
                       {"products": products})
+
+
+class ProductView(View):
+
+    def get(self, request, query, *args, **kwargs):
+
+        products = Product.objects.all().order_by('-price')
+
+        if query == 'search-query':
+            q = request.GET['q']
+
+        template = 'products/products.html'
+        return render(request, template,
+                      {"products": products})
+
+
+# class ProductDetail(View):
+#     """ Detailed view for chosen product """
+
+#     def get(self, request,  *args, *kwargs)
+
+
+#     return render(request, 'products/product_detail.html', context)

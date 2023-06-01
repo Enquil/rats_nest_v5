@@ -61,7 +61,7 @@ class ProductManager(models.Manager):
 
 class Product(models.Model):
 
-    domain = models.IntegerField(null=True, blank=True)
+    domain = models.IntegerField()
     category = models.ForeignKey('Category', null=True,
                                  on_delete=models.SET_NULL)
     brand = models.ForeignKey('Brand', null=True,

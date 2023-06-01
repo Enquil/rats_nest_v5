@@ -2,3 +2,11 @@
     height: 250px;
     width: auto;
 }
+
+.mt-custom-200 {
+    margin-top: 200px;
+}
+
+.product-detail-img {
+    max-width: 100%;
+}

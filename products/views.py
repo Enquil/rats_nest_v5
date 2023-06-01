@@ -12,16 +12,22 @@ class ProductView(View):
 
         products = Product.objects.all().order_by('-price')
 
-        if 'domain' in request.GET:
-            domain = request.GET['domain']
-            products = Product.objects.filter(domain=domain)
+        if 'category' in request.GET:
+            category = int(request.GET['category'])
+            if category <= 3:
+                products = Product.objects.filter(
+                            domain=category).order_by('-price')
+            else:
+                products = Product.objects.filter(
+                            category=category).order_by('-price')
 
         if 'q' in request.GET:
             q = request.GET['q']
 
-        template = 'products/products.html'
-        return render(request, template,
-                      {"products": products})
+        return render(request, 'products/products.html',
+                      {
+                        "products": products
+                        })
 
 
 class ProductDetail(View):

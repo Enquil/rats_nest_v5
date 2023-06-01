@@ -50,15 +50,6 @@ class Color(models.Model):
         return self.friendly_name
 
 
-class ProductManager(models.Manager):
-
-    def create_product(self, price, default_price):
-
-        if not self.price:
-            self.price = self.default_price
-        return self
-
-
 class Product(models.Model):
 
     domain = models.IntegerField(null=True, blank=True)

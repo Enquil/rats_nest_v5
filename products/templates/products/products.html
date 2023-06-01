@@ -14,9 +14,9 @@
         <div class="row">
             {% for product in products %}
                 <div class="col-12 col-md-4 col-lg-3">
+                    <img class="products-list-img" src="../media/{{ product.image }}" alt="">
                     <a href="{% url 'product_detail' product.id %}">
-                        <p>{{ product.name }}{{ product.price }}</p>
-                        <img class="list-img" src="media/{{ product.image }}" alt="">
+                        <p>{{ product.name }}, {{ product.color }}</p>
                     </a>
                 </div>
             {% endfor %}

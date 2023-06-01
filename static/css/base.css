@@ -10,3 +10,8 @@
 .product-detail-img {
     max-width: 100%;
 }
+
+.products-list-img {
+    max-width: 250px;
+    height: auto;
+}

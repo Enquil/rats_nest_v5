@@ -61,7 +61,7 @@ class ProductManager(models.Manager):
 
 class Product(models.Model):
 
-    domain = models.IntegerField()
+    domain = models.IntegerField(null=True, blank=True)
     category = models.ForeignKey('Category', null=True,
                                  on_delete=models.SET_NULL)
     brand = models.ForeignKey('Brand', null=True,
@@ -101,9 +101,5 @@ class Product(models.Model):
 
         if not self.domain:
             self.domain = self.category.parent.pk
-
-        if color is not None and color not in self.name:
-            self.name = None
-            self.name = name + ', ' + color
 
         return super().save(*args, **kwargs)

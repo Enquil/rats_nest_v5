@@ -26,13 +26,17 @@ class ProductView(View):
 
         return render(request, 'products/products.html',
                       {
-                        "products": products
+                        'products': products
                         })
 
 
 class ProductDetail(View):
     """ Detailed view for chosen product """
 
-    def get(self, request,  *args, **kwargs):
+    def get(self, request, product_id):
 
-        return render(request, 'products/product_detail.html')
+        product = get_object_or_404(Product, pk=product_id)
+        return render(request, 'products/product_detail.html',
+                      {
+                        'product': product
+                      })

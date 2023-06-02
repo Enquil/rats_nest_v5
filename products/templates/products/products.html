@@ -14,9 +14,9 @@
         <div class="row">
             <div class="col-12 col-lg-2 products-nav">
                 {% for category in categories %}
-                    <a href="">
-                        <p>
-                            {{ category }}
+                    <a href="{% url 'products' %}?category={{ category.pk }}">
+                        <p class="ml-4 text-capitalize">
+                            {{ category.friendly_name }}
                         </p>
                     </a>
                 {% endfor %}
@@ -25,6 +25,7 @@
                     <div class="row g-0">
                         {% for product in products %}
                         <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                            <hr>
                             <div class="product-list-card m-3">
                                 <div class="row">
                                     <div class="col-12">
@@ -33,22 +34,31 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <p class="m-0">{{ product.name }}</p>
-                                        <small class="text-capitalize"> {{ product.brand.friendly_name }}</small>
+                                        <p class="m-0 name-and-brand">
+                                            {{ product.name }}, {{ product.color }}
+                                            <br>
+                                            <span class="text-capitalize brand-span"> 
+                                                {{ product.brand.friendly_name }}
+                                            </span>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
                                         <p class="mb-1"><strong>${{ product.price }}</strong></p>
                                     </div>
-                                    <div class="col-6">
-                                        <button class="btn btn-dark">Buy</button>
+                                    <div class="col-6 product-detail-btn text-right">
+                                        <button class="btn btn-dark mt-auto">
+                                            <i class="fa-solid fa-cart-plus fa-lg mx-2"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        {% endfor %}
+                        </div>                    
+                    {% if forloop.counter|divisibleby:4 %} 
                     </div>
+                    {% endif %}
+                    {% endfor %}
             </div>
     </div>
 {% endblock %}

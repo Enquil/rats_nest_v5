@@ -10,8 +10,9 @@ class ProductView(View):
 
     def get(self, request, *args, **kwargs):
 
+        products = Product.objects.all()
         categories = Category.objects.all()
-        products = None
+        children = None
         parent = None
         category_nav = None
 
@@ -24,6 +25,20 @@ class ProductView(View):
             products = Product.objects.filter(
                         domain=domain).order_by('-price')
 
+        if 'category' in request.GET:
+
+            category = get_object_or_404(Category, pk=request.GET['category'])
+            domain = get_object_or_404(Domain, name=category.domain)
+
+            if category.is_parent:
+                categories = Category.objects.filter(parent=category.pk)
+                product_categories = [category.name for category in categories]
+                products = Product.objects.filter(
+                            category__name__in=product_categories)
+            else:
+                categories = Category.objects.filter(parent=category.parent.pk)
+                products = Product.objects.filter(category=category)
+
         if 'q' in request.GET:
             q = request.GET['q']
 
@@ -32,6 +47,7 @@ class ProductView(View):
                         'domain': domain,
                         'products': products,
                         'categories': categories,
+                        'children': children,
                         })
 
 

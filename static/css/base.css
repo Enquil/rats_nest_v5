@@ -12,6 +12,11 @@
 }
 
 .products-list-img {
-    max-width: 250px;
+    max-width: 200px;
     height: auto;
+}
+
+.product-list-card {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }

@@ -37,6 +37,14 @@ class Category(models.Model):
     def get_friendly_name(self):
         return self.friendly_name
 
+    def save(self, *args, **kwargs):
+
+        if not self.domain:
+            if self.parent:
+                self.domain = self.parent.domain
+
+        return super().save(*args, **kwargs)
+
 
 class Brand(models.Model):
 

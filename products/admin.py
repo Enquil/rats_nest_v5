@@ -1,6 +1,18 @@
 from django.contrib import admin
-from .models import Category, Brand, Product, Color
+from .models import Category, Brand, Product, Color, Domain
 from django.shortcuts import get_object_or_404
+
+
+@admin.register(Domain)
+class Domain(admin.ModelAdmin):
+
+    list_display = (
+        'pk',
+        'friendly_name',
+        'name',
+    )
+
+    ordering = ('pk',)
 
 
 @admin.register(Category)
@@ -11,6 +23,7 @@ class CategoryAdmin(admin.ModelAdmin):
         'friendly_name',
         'name',
         'parent',
+        'is_parent',
     )
 
     ordering = ('pk',)
@@ -25,7 +38,7 @@ class Brand(admin.ModelAdmin):
         'name',
     )
 
-    ordering = ('friendly_name',)
+    ordering = ('pk',)
 
 
 @admin.register(Color)
@@ -37,7 +50,7 @@ class Color(admin.ModelAdmin):
         'name',
     )
 
-    ordering = ('friendly_name',)
+    ordering = ('pk',)
 
 
 @admin.register(Product)

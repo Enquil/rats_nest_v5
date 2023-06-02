@@ -10,8 +10,8 @@ class ProductView(View):
 
     def get(self, request, *args, **kwargs):
 
-        products = Product.objects.all().order_by('-price')
         categories = Category.objects.all()
+        products = None
         parent = None
         category_nav = None
 
@@ -24,6 +24,8 @@ class ProductView(View):
                             domain=category_pk).order_by('-price')
                 category_nav = [category]
             else:
+                products = Product.objects.filter(category=category[0]).order_by('-price')
+                print(category)
                 parent = Category.objects.filter(pk=category[0].parent.pk)
                 categories = Category.objects.filter(parent=category[0].parent)
                 category_nav = [parent, category]

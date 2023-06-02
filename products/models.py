@@ -1,6 +1,21 @@
 from django.db import models
 
 
+class Domain(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Domains'
+
+    name = models.CharField(max_length=254)
+    friendly_name = models.CharField(max_length=254, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_friendly_name(self):
+        return self.friendly_name
+
+
 class Category(models.Model):
 
     class Meta:
@@ -8,10 +23,13 @@ class Category(models.Model):
 
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
+    domain = models.ForeignKey('Domain', null=True, blank=True,
+                               on_delete=models.SET_NULL)
     parent = models.ForeignKey('self',
                                null=True,
                                blank=True,
                                on_delete=models.SET_NULL)
+    is_parent = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -52,7 +70,8 @@ class Color(models.Model):
 
 class Product(models.Model):
 
-    domain = models.IntegerField(null=True, blank=True)
+    domain = models.ForeignKey('Domain', null=True, blank=True,
+                               on_delete=models.SET_NULL)
     category = models.ForeignKey('Category', null=True,
                                  on_delete=models.SET_NULL)
     brand = models.ForeignKey('Brand', null=True,
@@ -82,7 +101,7 @@ class Product(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-
+        print(self.category.pk)
         color = str(self.color)
         name = self.name
         category = self.category

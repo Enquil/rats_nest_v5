@@ -109,15 +109,14 @@ class Product(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        print(self.category.pk)
-        color = str(self.color)
-        name = self.name
+        domain = self.domain
         category = self.category
 
         if not self.price:
             self.price = self.default_price
 
-        if not self.domain:
-            self.domain = self.category.parent.pk
+        if not domain:
+            if category.parent.domain:
+                self.domain = category.parent.domain
 
         return super().save(*args, **kwargs)

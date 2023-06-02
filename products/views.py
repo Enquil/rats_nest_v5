@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Category, Brand, Product
+from .models import Category, Brand, Product, Domain
 from django.views import View
 
 
@@ -15,30 +15,23 @@ class ProductView(View):
         parent = None
         category_nav = None
 
-        if 'category' in request.GET:
-            category_pk = int(request.GET['category'])
-            category = Category.objects.filter(pk=category_pk)
-            if category_pk <= 3:
-                categories = Category.objects.filter(parent=category_pk)
-                products = Product.objects.filter(
-                            domain=category_pk).order_by('-price')
-                category_nav = [category]
-            else:
-                products = Product.objects.filter(category=category[0]).order_by('-price')
-                print(category)
-                parent = Category.objects.filter(pk=category[0].parent.pk)
-                categories = Category.objects.filter(parent=category[0].parent)
-                category_nav = [parent, category]
+        if 'domain' in request.GET:
+            domain = get_object_or_404(Domain, pk=request.GET['domain'])
+            categories_and_children = Category.objects.filter(domain=domain)
+
+            categories = [item for item in categories_and_children
+                          if item.parent is None]
+            products = Product.objects.filter(
+                        domain=domain).order_by('-price')
 
         if 'q' in request.GET:
             q = request.GET['q']
 
         return render(request, 'products/products.html',
                       {
+                        'domain': domain,
                         'products': products,
                         'categories': categories,
-                        'category_nav': category_nav,
-                        'parent': parent,
                         })
 
 

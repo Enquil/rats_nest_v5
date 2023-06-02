@@ -12,11 +12,17 @@
 }
 
 .products-list-img {
-    max-width: 175px;
+    max-width: 220px;
+    width: auto;
     height: auto;
 }
 
-.product-list-card {
+.post-list-card {
     border-left: 1px solid black;
-    border-right: 1px solid black;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }

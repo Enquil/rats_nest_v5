@@ -59,16 +59,23 @@
             <nav class="navbar navbar-light d-block">
                 <div id="navbarcollapse" class="collapse d-md-block">
                     <div class="row">
+                        <div class="col-6">
+                        </div>
+                        <div class="col-12 text-right">
+                            <a class="mx-1" href="{% url 'shopping_bag' %}"><i class="fa-solid fa-bag-shopping fa-2x"></i></a>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-12 col-md-6">
-                            <a class="mx-1 domain-link d-block d-md-inline-block" href="{% url 'products' %}?domain=1">Clothing</a>
-                            <a class="mx-1 domain-link d-block d-md-inline-block" href="{% url 'products' %}?domain=2">Gear and Equipment</a>
-                            <a class="mx-1 domain-link d-block d-md-inline-block" href="{% url 'products' %}?domain=3">Supplements</a>
+                            <a class="mx-1 domain-link d-block d-md-inline-block text-dark" href="{% url 'products' %}?domain=1">Clothing</a>
+                            <a class="mx-1 domain-link d-block d-md-inline-block text-dark" href="{% url 'products' %}?domain=2">Gear and Equipment</a>
+                            <a class="mx-1 domain-link d-block d-md-inline-block text-dark" href="{% url 'products' %}?domain=3">Supplements</a>
                         </div>
                         <div class="col-12 col-md-6 text-right">
-                                <a class="mx-1 service-link d-block d-md-inline-block" href="">Outlet</a>
-                                <a class="mx-1 service-link d-block d-md-inline-block" href="">Giftcards</a>
-                                <a class="mx-1 service-link d-block d-md-inline-block" href="">Newsletter</a>
-                                <a class="mx-1 service-link d-block d-md-inline-block" href="">Contact</a>
+                                <a class="mx-1 service-link d-block d-md-inline-block text-dark" href="">Outlet</a>
+                                <a class="mx-1 service-link d-block d-md-inline-block text-dark" href="">Giftcards</a>
+                                <a class="mx-1 service-link d-block d-md-inline-block text-dark" href="">Newsletter</a>
+                                <a class="mx-1 service-link d-block d-md-inline-block text-dark" href="">Contact</a>
                         </div>
                     </div>
                 </div>

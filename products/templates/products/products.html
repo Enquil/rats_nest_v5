@@ -55,9 +55,11 @@
                                         <p class="mb-1"><strong>${{ product.price }}</strong></p>
                                     </div>
                                     <div class="col-6 product-detail-btn text-right">
+                                    <a href="{% url 'product_detail' product.id %}">
                                         <button class="btn btn-dark mt-auto">
                                             <i class="fa-solid fa-cart-plus fa-lg mx-2"></i>
                                         </button>
+                                    </a>
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from products.models import Product
 from django.views import View
+from django.shortcuts import (render, get_object_or_404,
+                              redirect, reverse)
+from django.http import (HttpResponse,
+                         HttpResponseRedirect)
 from django.contrib import messages
 
 
@@ -18,5 +22,16 @@ class AddItem(View):
     '''
 
     def post(self, request, item_id, *args, **kwargs):
+
+        product = get_object_or_404(Product, pk=item_id)
         quantity = int(request.POST['quantity'])
-        print(request.POST)
+        sku = int(request.POST['sku'])
+
+        bag = request.session.get('bag', {})
+
+        if item_id in list(bag.keys()):
+            bag[item_id] += quantity
+        else:
+            bag[item_id] = quantity
+
+        return HttpResponseRedirect(reverse('product_detail', args=[sku]))

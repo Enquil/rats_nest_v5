@@ -1,14 +1,21 @@
-.list-img {
-    height: 250px;
-    width: auto;
+/* ----- General Rules ----- */
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .mt-custom-200 {
     margin-top: 200px;
 }
 
-.product-detail-img {
-    max-width: 100%;
+
+/* -----  Products List View  ----- */
+
+.list-img {
+    height: 250px;
+    width: auto;
 }
 
 .products-list-img {
@@ -19,12 +26,6 @@
 
 .post-list-card {
     border-left: 1px solid black;
-}
-
-body{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 .name-and-brand {
@@ -38,8 +39,19 @@ body{
     font-weight: 400;
 }
 
+.category-aside-link {
+    font-size: 25px;
+}
+
+
+/* ----- Product Detail View ----- */
+
 .product-detail-btn {
     position: absolute;
     right:    15px;
     bottom:   15px;
+}
+
+.product-detail-img {
+    max-width: 100%;
 }

@@ -54,10 +54,10 @@ class ProductView(View):
 class ProductDetail(View):
     """ Detailed view for chosen product """
 
-    def get(self, request, product_id):
+    def get(self, request, product_sku):
 
-        product = get_object_or_404(Product, pk=product_id)
+        product = get_object_or_404(Product, sku=product_sku)
         return render(request, 'products/product_detail.html',
                       {
-                        'product': product
+                        'product': product,
                       })

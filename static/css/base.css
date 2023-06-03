@@ -53,5 +53,20 @@ body{
 }
 
 .product-detail-img {
-    max-width: 100%;
+    max-width: 90%;
+}
+
+.name-and-brand {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.product-buy-form {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.price-and-rating {
+    padding-left: 5%;
+    padding-right: 5%;
 }

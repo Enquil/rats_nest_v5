@@ -14,19 +14,20 @@
         <!-- Product Card -->
         <div class="product-card">
             <div class="row">
-                <div class="col-12 col-lg-5 offset-lg-1">
+                <div class="col-12 col-lg-5 offset-lg-1 text-center">
                     <img class="product-detail-img" src="../media/{{ product.image }}" alt="">
                 </div>
                 <!-- Product Info -->
                 <div class="col-12 col-lg-5">
-                    <div class="row">
+                    <!-- Product Name, Brand, Color -->
+                    <div class="row name-and-brand">
                         <div class="col-12">
                             <h2>{{ product.name }}{% if product.color %}, {{ product.color|title }}{% endif %}</h2>
                             <h5>{{ product.brand.friendly_name|title }}</h5>
                         </div>
                     </div>
-                    <!-- Product Name, Brand, Price, Rating -->
-                    <div class="row">
+                    <!-- Product Price, Rating -->
+                    <div class="row price-and-rating">
                         <!-- Name, Brand, Price -->
                         <div class="col-12 col-lg-5">
                             {% if product.price != product.default_price %}
@@ -43,6 +44,21 @@
                             {% else %}
                             No reviews
                             {% endif %}
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- Form for adding Product -->
+                    <div class="row">
+                        <div class="col-12">
+                            <form class="product-buy-form" action="" method="post">
+                                {% csrf_token %}
+                                <div class="input-group">
+                                    <input type="number" name="quantity" value="1" 
+                                           min="1" max="99" class="form-control qty-input mr-1"
+                                           data-item_id="{{ product.pk }}" id="id_qty_{{ product.pk }}">
+                                           <a href="" class="btn btn-dark">Add</a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

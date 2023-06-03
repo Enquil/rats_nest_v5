@@ -39,6 +39,7 @@
                                         <img class="products-list-img" src="../media/{{ product.image }}" alt="">
                                     </div>
                                 </div>
+                                <!-- Name, Color and Brand -->
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="m-0 name-and-brand">
@@ -50,6 +51,18 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        {% if product.rating %}
+                                        <!-- Progress Bar -->
+                                        <progress value="{{ product.rating }}" max="5"></progress>
+                                        {{ product.rating }}
+                                        {% else %}
+                                        No reviews
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <!-- Price and ProductDetail Button -->
                                 <div class="row">
                                     <div class="col-6">
                                         <p class="mb-1"><strong>${{ product.price }}</strong></p>

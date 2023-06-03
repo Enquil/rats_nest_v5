@@ -29,12 +29,12 @@ body{
 
 .name-and-brand {
     line-height: 96%;
-    font-size: 1.4em;
+    font-size: 20px;
     font-weight: 500;
 }
 
 .brand-span {
-    font-size: 0.7em;
+    font-size: 12px;
     font-weight: 400;
 }
 

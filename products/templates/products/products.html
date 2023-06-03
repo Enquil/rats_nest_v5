@@ -12,6 +12,8 @@
 {% block content %}
     <div class="container-fluid mt-custom-200">
         <div class="row">
+
+            <!-- Left Side Filters and Navigation -->
             <div class="col-12 col-lg-2 products-nav">
                 {% for category in categories %}
                     <a href="{% url 'products' %}?category={{ category.pk }}">
@@ -21,8 +23,13 @@
                     </a>
                 {% endfor %}
             </div>
-            <div class="col-12 col-lg-10">
+            <!-- / Left Side Filters and Navigation -->
+
+            <!-- Listview for Products -->
+            <div class="col-12 col-lg-9 col-xl-8">
                     <div class="row g-0">
+
+                        <!-- Product Loop -->
                         {% for product in products %}
                         <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
                             <hr>
@@ -58,7 +65,9 @@
                     {% if forloop.counter|divisibleby:4 %} 
                     </div>
                     {% endif %}
-                    {% endfor %}
+                {% endfor %}
+                <!-- / Product Loop -->
             </div>
+            <!-- / Listview for Products -->
     </div>
 {% endblock %}

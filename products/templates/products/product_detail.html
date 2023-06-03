@@ -11,15 +11,41 @@
 
 {% block content %}
     <div class="container-fluid mt-custom-200">
-        <div class="row">
-            <div class="col-12">{{ product.domain }}</div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-lg-5 offset-lg-1 px-5">
-                <img class="product-detail-img" src="../media/{{ product.image }}" alt="">
-            </div>
-            <div class="col-12 col-lg-6 px-5">
-                <h2>{{ product.name }}</h2>
+        <!-- Product Card -->
+        <div class="product-card">
+            <div class="row">
+                <div class="col-12 col-lg-5 offset-lg-1">
+                    <img class="product-detail-img" src="../media/{{ product.image }}" alt="">
+                </div>
+                <!-- Product Info -->
+                <div class="col-12 col-lg-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2>{{ product.name }}{% if product.color %}, {{ product.color|title }}{% endif %}</h2>
+                            <h5>{{ product.brand.friendly_name|title }}</h5>
+                        </div>
+                    </div>
+                    <!-- Product Name, Brand, Price, Rating -->
+                    <div class="row">
+                        <!-- Name, Brand, Price -->
+                        <div class="col-12 col-lg-5">
+                            {% if product.price != product.default_price %}
+                            <h3>{{ product.price }}</h3>
+                            <h6><del>{{ product.default_price }}</del></h6>
+                            {% else %}
+                            <h4>${{ product.price }}</h4>
+                            {% endif %}
+                        </div>
+                        <!-- Rating -->
+                        <div class="col-12 col-lg-5 text-right">
+                            {% if product.rating %}
+                            {{ product.rating }}
+                            {% else %}
+                            No reviews
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

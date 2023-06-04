@@ -15,6 +15,7 @@ class ProductView(View):
         children = None
         parent = None
         category_nav = None
+        bag = request.session.get('bag', {})
 
         if 'domain' in request.GET:
             domain = get_object_or_404(Domain, pk=request.GET['domain'])

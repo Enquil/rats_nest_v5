@@ -11,7 +11,6 @@ class BagView(View):
     '''
     Bag View
     '''
-    bag = request.session.get('bag', {})
 
     def get(self, request, *args, **kwargs):
         template = 'bag/bag.html'

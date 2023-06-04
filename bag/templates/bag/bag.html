@@ -19,11 +19,39 @@
         <div class="row">
             <div class="col-12">
                 {% if bag_items %}
-                    {% for item in bag_items %}
-                    <p>{{ item.product. }}</p>
-                    {% endfor %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="px-3" scope="col">Product Info</th>
+                                <th class="px-3" scope="col"></th>
+                                <th class="px-3" scope="col">Price</th>
+                                <th class="px-3" scope="col">Qty</th>
+                                <th class="px-3" scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in bag_items %}
+                                <tr>
+                                    <td class="px-3">{{ item.product.name }} {% if item.product.has_sizes %}{% endif %}</td>
+                                    <td class="px-3">{{ item.product.sku }}</td>
+                                    <td class="px-3">{{ item.product.price }}</td>
+                                    <td class="px-3">{{ item.quantity }}</td>
+                                    <td class="px-3">${{ item.product.price }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 {% else %}
                 <h3>Your bag is empty</h3>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {% if grand_total %}
+                <h3>${{ grand_total|floatformat:2 }}</h3>
+                {% else %}
+                <h3>$0.00</h3>
                 {% endif %}
             </div>
         </div>

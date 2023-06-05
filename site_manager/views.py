@@ -1,0 +1,13 @@
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
+from django.db.models import Q
+from django.db.models.functions import Lower
+from products.models import Category, Brand, Product, Domain
+from django.views import View
+
+
+class SiteManager(View):
+
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        return render(request, 'site_manager/site_manager.html')

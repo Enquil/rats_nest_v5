@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="mt-custom-200">
+    {% if user.is_superuser %}
+    <div class="row">
+        <div class="col-12">
+            <h2>
+                Welcome to SiteManager
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <a class="btn btn-dark" href=""><i class="fa-solid fa-plus fa-xl"></i> Add Product</a>
+        </div>
+    </div>
+    {% else %}
+    {% endif %}
+</div>
+{% endblock %}

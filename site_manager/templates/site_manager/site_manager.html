@@ -24,6 +24,32 @@
             <a class="btn btn-dark" href=""><i class="fa-solid fa-plus fa-xl"></i> Add Product</a>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+            <form method="post" action="" class="mb-2">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12">
+                        {{ add_form.name }}
+                        {{ add_form.category }}
+                        {{ add_form.category }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                    {{ add_form.color }}
+                    {{ add_form.feature_list }}
+                    {{ add_form.description }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 offset-md-2 text-center">
+                        <button type="submit" class="btn bg-mint">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     {% else %}
     {% endif %}
 </div>

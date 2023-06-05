@@ -11,7 +11,7 @@
 
 {% block content %}
 <div class="mt-custom-200">
-    {% if user.is_superuser %}
+    {% if request.user.is_superuser %}
     <div class="row">
         <div class="col-12">
             <h2>

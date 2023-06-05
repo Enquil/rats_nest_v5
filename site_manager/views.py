@@ -9,5 +9,5 @@ from django.views import View
 class SiteManager(View):
 
     def get(self, request, *args, **kwargs):
-        user = request.user
+        
         return render(request, 'site_manager/site_manager.html')

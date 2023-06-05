@@ -30,21 +30,28 @@
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-12">
-                        {{ add_form.name }}
-                        {{ add_form.category }}
-                        {{ add_form.category }}
+                        {{ add_product_form.name }}
+                        {{ add_product_form.category }}
+                        {{ add_product_form.brand }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
-                    {{ add_form.color }}
-                    {{ add_form.feature_list }}
-                    {{ add_form.description }}
+                    {{ add_product_form.color }}
+                    {{ add_product_form.feature_list }}
+                    {{ add_product_form.description }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                    {{ add_product_form.image_url }}
+                    {{ add_product_form.image_url2 }}
+                    {{ add_product_form.image_url3 }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-8 offset-md-2 text-center">
-                        <button type="submit" class="btn bg-mint">Submit</button>
+                        <button type="submit" class="btn btn-dark">Submit</button>
                     </div>
                 </div>
             </form>

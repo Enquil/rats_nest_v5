@@ -26,4 +26,6 @@ class SiteManager(View):
             form.save()
             return render(request, ('site_manager/site_manager.html'))
         else:
+            form = add_product_form.save(commit=False)
+            print(form.errors.as_data())
             add_product_form = AddProductForm()

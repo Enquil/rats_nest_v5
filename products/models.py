@@ -116,7 +116,10 @@ class Product(models.Model):
             self.price = self.default_price
 
         if not domain:
-            if category.parent.domain:
+
+            if category.is_parent:
+                self.domain = category.domain
+            elif category.parent.domain:
                 self.domain = category.parent.domain
 
         return super().save(*args, **kwargs)

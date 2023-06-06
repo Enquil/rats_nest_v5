@@ -79,8 +79,7 @@ class ProductAdmin(admin.ModelAdmin):
                 color_mix = '000'.replace('0', '', len(str(query.color.pk)))
                 color = color_mix + str(query.color.pk)
 
-            sku_mix = [query.domain.pk, query.category.pk,
-                       query.category.parent.pk,
-                       query.brand.pk, query.pk, color]
+            sku_mix = [query.domain.pk, query.category.pk, color,
+                       query.brand.pk, query.pk]
 
             product.update(sku=''.join(map(str, sku_mix)))

@@ -50,10 +50,10 @@
                     <!-- Form for adding Product -->
                     <div class="row">
                         <div class="col-12">
-                            <form class="product-buy-form" action="{% url 'add_item' product.pk %}" method="post">
+                            <form class="size-and-buy-form" action="{% url 'add_item' product.pk %}" method="post">
                                 {% csrf_token %}
                                 {% if size_list  %}
-                                    <select>
+                                    <select name="size" id="size">
                                         {% for li in size_list %}
                                             <option value="{{ li }}">{{ li }}</option>
                                         {% endfor %}

@@ -25,15 +25,28 @@ class AddItem(View):
     def post(self, request, item_id, *args, **kwargs):
 
         product = get_object_or_404(Product, pk=item_id)
+
         quantity = int(request.POST['quantity'])
         sku = int(request.POST['sku'])
+        size = None
+        if 'size' in request.POST:
+            size = request.POST['size']
 
         bag = request.session.get('bag', {})
-
-        if item_id in list(bag.keys()):
-            bag[item_id] += quantity
+        if size:
+            if item_id in list(bag.keys()):
+                if size in bag[item_id]['items_by_size'].keys():
+                    bag[item_id]['items_by_size'][size] += quantity
+                else:
+                    bag[item_id]['items_by_size'][size] = quantity
+            else:
+                bag[item_id] = {'items_by_size': {size: quantity}}
         else:
-            bag[item_id] = quantity
+            if item_id in list(bag.keys()):
+                bag[item_id] += quantity
+            else:
+                bag[item_id] = quantity
+        print(bag)
 
         request.session['bag'] = bag
         return HttpResponseRedirect(reverse('product_detail', args=[sku]))

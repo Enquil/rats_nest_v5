@@ -52,6 +52,14 @@
                         <div class="col-12">
                             <form class="product-buy-form" action="{% url 'add_item' product.pk %}" method="post">
                                 {% csrf_token %}
+                            {% if product.has_sizes %}
+                                {% if product.category.parent == 'shoe'  %}
+                                    <h2>meow</h2>
+                                {% else %}
+                                    <h2>voof</h2>
+                                {% endif %}
+                            {% else %}
+                            {% endif %}
                                 <div class="input-group">
                                     <input type="number" name="quantity" value="1" 
                                            min="1" max="99" class="form-control qty-input mr-1"

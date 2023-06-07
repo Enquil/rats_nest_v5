@@ -57,7 +57,16 @@ class ProductDetail(View):
     def get(self, request, product_sku):
 
         product = get_object_or_404(Product, sku=product_sku)
+        category_parent = str(product.category.parent)
+        size_list = None
+        if category_parent == 'shoes':
+            size_list = ('35', '36')
+
+        if size_list is not None:
+            print('mewo')
+
         return render(request, 'products/product_detail.html',
                       {
                         'product': product,
+                        'category_parent': category_parent,
                       })

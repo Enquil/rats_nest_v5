@@ -57,16 +57,20 @@ class ProductDetail(View):
     def get(self, request, product_sku):
 
         product = get_object_or_404(Product, sku=product_sku)
+        domain = str(product.category.domain)
         category_parent = str(product.category.parent)
         size_list = None
-        if category_parent == 'shoes':
-            size_list = ('35', '36')
 
-        if size_list is not None:
-            print('mewo')
+        if domain == 'clothing':
+            if category_parent == 'shoes':
+                size_list = ('35', '36', '37', '38', '39', '40',
+                             '41', '42', '43', '44', '45', '46')
+            else:
+                size_list = ('XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL')
 
         return render(request, 'products/product_detail.html',
                       {
                         'product': product,
                         'category_parent': category_parent,
+                        'size_list': size_list,
                       })

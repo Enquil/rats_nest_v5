@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-enquil-ratsnestv5-c4dp1j1u7o0.ws-eu98.gitpod.io']
+ALLOWED_HOSTS = ['8000-enquil-ratsnestv5-c4dp1j1u7o0.ws-eu99.gitpod.io']
 
 
 # Application definition

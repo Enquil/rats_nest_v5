@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'site_manager',
+    'checkout',
 ]
 
 MIDDLEWARE = [

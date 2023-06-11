@@ -29,6 +29,7 @@ class AddItem(View):
         quantity = int(request.POST['quantity'])
         sku = int(request.POST['sku'])
         size = None
+        item_id = int(item_id)
         if 'size' in request.POST:
             size = request.POST['size']
 

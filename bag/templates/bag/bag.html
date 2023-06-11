@@ -42,8 +42,10 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                    <a href="{% url 'products' %}" class="btn btn-dark keep-shopping">Keep Shopping</a>
                 {% else %}
                 <h3>Your bag is empty</h3>
+                <a href="{% url 'products' %}" class="btn btn-dark keep-shopping">Keep Shopping</a>
                 {% endif %}
             </div>
         </div>

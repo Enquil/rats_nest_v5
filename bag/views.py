@@ -13,6 +13,7 @@ class BagView(View):
     '''
 
     def get(self, request, *args, **kwargs):
+
         template = 'bag/bag.html'
         return render(request, template)
 
@@ -29,7 +30,7 @@ class AddItem(View):
         quantity = int(request.POST['quantity'])
         sku = int(request.POST['sku'])
         size = None
-        item_id = int(item_id)
+
         if 'size' in request.POST:
             size = request.POST['size']
 
@@ -48,6 +49,5 @@ class AddItem(View):
             else:
                 bag[item_id] = quantity
         print(bag)
-
         request.session['bag'] = bag
         return HttpResponseRedirect(reverse('product_detail', args=[sku]))

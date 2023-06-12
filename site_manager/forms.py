@@ -7,6 +7,6 @@ class AddProductForm(forms.ModelForm):
         model = Product
         fields = ('name', 'category', 'brand', 'color', 'description',
                   'feature_list', 'default_price',
-                  'image_url', 'image_url2', 'image_url3')
+                  'image', 'image2', 'image3')
         labels = {'body': 'Leave a comment'}
         # widgets = {'body': forms.Textarea(attrs={'cols': 60, 'rows': 4})}

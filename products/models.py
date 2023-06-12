@@ -1,5 +1,5 @@
 from django.db import models
-
+from cloudinary.models import CloudinaryField
 
 class Domain(models.Model):
 
@@ -97,13 +97,9 @@ class Product(models.Model):
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True,
                                  blank=True)
     # Images
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True,
-                              blank=True)
-    image_url2 = models.URLField(max_length=1024, null=True, blank=True)
-    image2 = models.ImageField(null=True, blank=True)
-    image_url3 = models.URLField(max_length=1024, null=True, blank=True)
-    image3 = models.ImageField(null=True, blank=True)
+    image = CloudinaryField('image', default='')
+    image2 = CloudinaryField('image', default='')
+    image3 = CloudinaryField('image', default='')
 
     def __str__(self):
         return self.name

@@ -48,6 +48,6 @@ class AddItem(View):
                 bag[item_id] += quantity
             else:
                 bag[item_id] = quantity
-        print(bag)
+
         request.session['bag'] = bag
         return HttpResponseRedirect(reverse('product_detail', args=[sku]))

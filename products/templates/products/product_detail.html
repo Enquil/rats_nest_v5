@@ -15,7 +15,11 @@
         <div class="product-card">
             <div class="row">
                 <div class="col-12 col-lg-5 offset-lg-1 text-center">
-                    <img class="product-detail-img" src="../media/{{ product.image }}" alt="">
+                    {% if "placeholder" not in product.image.url  %}
+                        <img class="products-list-img" src="{{ product.image.url }}" alt="">
+                    {% else %}
+                        <h2>No Image</h2>
+                    {% endif %}
                 </div>
                 <!-- Product Info -->
                 <div class="col-12 col-lg-5">

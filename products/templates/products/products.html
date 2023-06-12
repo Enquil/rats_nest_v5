@@ -36,7 +36,11 @@
                             <div class="product-list-card m-3">
                                 <div class="row">
                                     <div class="col-12">
-                                        <img class="products-list-img" src="../media/{{ product.image }}" alt="">
+                                        {% if "placeholder" not in product.image.url  %}
+                                            <img class="products-list-img" src="{{ product.image.url }}" alt="">
+                                        {% else %}
+                                        <h2>No Image</h2>
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <!-- Name, Color and Brand -->

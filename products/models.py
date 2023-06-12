@@ -97,9 +97,9 @@ class Product(models.Model):
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True,
                                  blank=True)
     # Images
-    image = CloudinaryField('image', default='')
-    image2 = CloudinaryField('image', default='')
-    image3 = CloudinaryField('image', default='')
+    image = CloudinaryField('image', default='placeholder')
+    image2 = CloudinaryField('image', default='placeholder')
+    image3 = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return self.name

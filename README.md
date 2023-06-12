@@ -1,3 +1,3 @@
 # Rats Nest V5
 
-## Known Issues
+Stay tuned for V3, when this site actually is going to be usable.
